@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Проклятый уголь!</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+		<h1>Бог его знает, как это работает.)</h1>
+
+		<table border="1" bgcolor="fffff">
+			<tr id="row1">
+				<td>Дата</td>
+			</tr>
+			<tr id="row2">
+				<td>t н.в. 0С</td>
+			</tr>
+			<tr id="row3">
+				<td>Отпуск</td>
+			</tr>
+			<tr id="row4">
+				<td>План</td>
+				<!-- <td = id="rowLead"><select id="coal_grade">
+					<option value="coalGrade">АС</option>
+					<option value="coalGrade">ДГ</option>
+				</select></td> -->
+			</tr>
+			<tr id="row5">
+				<td>Факт, т</td>
+			</tr>
+			<tr id="row6">
+				<td>АС, %</td>
+			</tr>
+			<tr id="row7">
+				<td>ДГ, %</td>
+			</tr>
+			<tr id="row8">
+				<td>АС калорийность на 0 часов</td>
+			</tr>
+			<tr id="row9">
+				<td>АС калорийность на 24 часа</td>
+			</tr>
+			<tr id="row10">
+				<td>АС остаток на 0 часов</td>
+			</tr>
+			<tr id="row11">
+				<td>АС остаток на на 24 часа</td>
+			</tr>
+			<tr id="row12">
+				<td>ДГ калорийность на 0 часов</td>
+			</tr>
+			<tr id="row13">
+				<td>ДГ калорийность на 24 часа</td>
+			</tr>
+			<tr id="row14">
+				<td>ДГ остаток на 0 часов</td>
+			</tr>
+			<tr id="row15">
+				<td>ДГ остаток на на 24 часа</td>
+			</tr>
+			<tr id="row16">
+				<td>калорийность списания</td>
+			</tr>
+			<tr id="row17">
+				<td>Факт прихода, т</td>
+			</tr>
+			<tr id="row18">
+				<td>Марка прихода</td>
+			</tr>
+			<tr id="row19">
+				<td>Выбор склада</td>
+			</tr>
+			<tr id="row20">
+				<td>калорийность прихода</td>
+			</tr>
+			<tr id="row21">
+				<td>Ушло на объекты, т</td>
+			</tr>
+			<tr id="row22">
+				<td>Марка ухода</td>
+			</tr>
+
+
+
+
+
+			
+		</table>
+	<a href = "javascript://" onclick="addColumns();">Добавить</a>
+
+	<a href = "javascript://" onclick="plan (['АС','ДГ'])">Пересчитать</a>
+</body>
+
+<script src="dataForCalculations.js"></script>
+<script type="text/javascript">
+
+	var numberOfAdditions = 0;
+
+	function addColumns() {
+
+		var td1 = newColumns (td1);
+		var td2 = newColumns (td2);
+		var td3 = newColumns (td3);
+		var td4 = newColumns (td4);
+		var td5 = newColumns (td5);
+		var td6 = newColumns (td6);
+		var td7 = newColumns (td7);
+		var td8 = newColumns (td8);
+		var td9 = newColumns (td9);
+		var td10 = newColumns (td10);
+		var td11 = newColumns (td11);
+		var td12 = newColumns (td12);
+		var td13 = newColumns (td13);
+		var td14 = newColumns (td14);
+		var td15 = newColumns (td15);
+		var td16 = newColumns (td16);
+		var td17 = newColumns (td17);
+		var td18 = newColumns (td18);
+		var td19 = newColumns (td19);
+		var td20 = newColumns (td20);
+		var td21 = newColumns (td21);
+		var td22 = newColumns (td22);
+
+
+
+
+
+
+		// var td2 = document.createElement("TD");  td2.innerHTML = -0.5;
+		// var nameTd3 = "td3" + data;
+		// var td3 = document.createElement("TD");  td3.id = nameTd3;
+		// var nameTd4 = "td4" + data;
+		// var td4 = document.createElement("TD");  td4.id = nameTd4;
+		var select = newList(["АС","ДГ"]);
+
+		td4.appendChild (select);
+		row1.appendChild (td1);
+		row2.appendChild (td2);
+		row3.appendChild (td3);
+		row4.appendChild (td4);
+	}
+
+	function newList (arr) {
+		var select = document.createElement('select');
+		for (var i = 0; i < arr.length; i++) {
+			var option = document.createElement('option');
+			option.innerHTML = arr[i];
+			select.appendChild(option);
+		}
+		select.id = "sel" + numberOfAdditions;
+		return select;
+	}
+
+
+	function dataPlus() {
+		return numberOfAdditions++;
+	}
+
+	function plan (arr) {
+		if (document.getElementById("sel" + numberOfAdditions).value === "АС") {
+			document.getElementById("td3" + numberOfAdditions).innerHTML = 0.54;
+		} else document.getElementById("td3" + numberOfAdditions).innerHTML = 1.98;
+	}
+
+
+
+
+
+	function newColumns (argument) {
+		argument = document.createElement("TD");
+		var txt = "";
+		txt += argument; 
+		var nameArgument = txt + numberOfAdditions;
+		argument.id = nameArgument;
+		return argument;
+	}
+</script>
+
+</html>
+
+<!-- https://htmlweb.ru/java/example/add_row_in_table.php -->
+<!-- https://javascript.ru/forum/dom-window/1264-dobavlenie-strok-v-tablicu.html -->
