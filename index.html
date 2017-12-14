@@ -9,7 +9,7 @@
 
 		<h1>Бог его знает, как это работает.)</h1>
 
-		<table border="1" bgcolor="fffff">
+		<table border="1" bgcolor="fffff" id="coal_grade">
 			<tr id="row1">
 				<td>Дата</td>
 			</tr>
@@ -91,6 +91,7 @@
 
 	<a href = "javascript://" onclick="plan (['АС','ДГ'])">Пересчитать</a>
 </body>
+<div class="box"> <input type="text" id ="userVers"></div>
 
 <script src="dataForCalculations.js"></script>
 <script type="text/javascript">
@@ -132,13 +133,38 @@
 		// var td3 = document.createElement("TD");  td3.id = nameTd3;
 		// var nameTd4 = "td4" + data;
 		// var td4 = document.createElement("TD");  td4.id = nameTd4;
-		var select = newList(["АС","ДГ"]);
+		// td5.innerHTML = 
+		td18.appendChild ( newList(["АС","ДГ"]) );
 
-		td4.appendChild (select);
+
 		row1.appendChild (td1);
 		row2.appendChild (td2);
 		row3.appendChild (td3);
 		row4.appendChild (td4);
+		row5.appendChild (td5);
+		row6.appendChild (td6);
+		row7.appendChild (td7);
+		row8.appendChild (td8);
+		row9.appendChild (td9);
+		row10.appendChild (td10);
+		row11.appendChild (td11);
+		row12.appendChild (td12);
+		row13.appendChild (td13);
+		row14.appendChild (td14);
+		row15.appendChild (td15);
+		row16.appendChild (td16);
+		row17.appendChild (td17);
+		row18.appendChild (td18);
+		row19.appendChild (td19);
+		row20.appendChild (td20);
+		row21.appendChild (td21);
+		row22.appendChild (td22);
+
+
+
+
+
+
 	}
 
 	function newList (arr) {
