@@ -9,135 +9,165 @@
 
 		<h1>Бог его знает, как это работает.)</h1>
 
+		<!-- Создаем таблицу -->
 		<table border="1" bgcolor="fffff" id="coal_grade">
 			<tr id="row1">
+				<td>1</td>
 				<td>Дата</td>
 			</tr>
 			<tr id="row2">
+				<td>2</td>
 				<td>t н.в. 0С</td>
 			</tr>
 			<tr id="row3">
+				<td>3</td>
 				<td>Отпуск</td>
 			</tr>
 			<tr id="row4">
+				<td>4</td>
 				<td>План</td>
-				<!-- <td = id="rowLead"><select id="coal_grade">
-					<option value="coalGrade">АС</option>
-					<option value="coalGrade">ДГ</option>
-				</select></td> -->
+					<!-- <td = id="rowLead"><select id="coal_grade">
+						<option value="coalGrade">АС</option>
+						<option value="coalGrade">ДГ</option>
+					</select></td> -->
 			</tr>
 			<tr id="row5">
+				<td>5</td>
 				<td>Факт, т</td>
 			</tr>
 			<tr id="row6">
+				<td>6</td>
 				<td>АС, %</td>
 			</tr>
 			<tr id="row7">
+				<td>7</td>
 				<td>ДГ, %</td>
 			</tr>
 			<tr id="row8">
+				<td>8</td>
 				<td>АС калорийность на 0 часов</td>
 			</tr>
 			<tr id="row9">
+				<td>9</td>
 				<td>АС калорийность на 24 часа</td>
 			</tr>
 			<tr id="row10">
+				<td>10</td>
 				<td>АС остаток на 0 часов</td>
 			</tr>
 			<tr id="row11">
+				<td>11</td>
 				<td>АС остаток на на 24 часа</td>
 			</tr>
 			<tr id="row12">
+				<td>12</td>
 				<td>ДГ калорийность на 0 часов</td>
 			</tr>
 			<tr id="row13">
+				<td>13</td>
 				<td>ДГ калорийность на 24 часа</td>
 			</tr>
 			<tr id="row14">
+				<td>14</td>
 				<td>ДГ остаток на 0 часов</td>
 			</tr>
 			<tr id="row15">
+				<td>15</td>
 				<td>ДГ остаток на на 24 часа</td>
 			</tr>
 			<tr id="row16">
+				<td>16</td>
 				<td>калорийность списания</td>
 			</tr>
 			<tr id="row17">
+				<td>17</td>
 				<td>Факт прихода, т</td>
 			</tr>
 			<tr id="row18">
+				<td>18</td>
 				<td>Марка прихода</td>
 			</tr>
 			<tr id="row19">
+				<td>19</td>
 				<td>Выбор склада</td>
 			</tr>
 			<tr id="row20">
+				<td>20</td>
 				<td>калорийность прихода</td>
 			</tr>
 			<tr id="row21">
+				<td>21</td>
 				<td>Ушло на объекты, т</td>
 			</tr>
 			<tr id="row22">
+				<td>22</td>
 				<td>Марка ухода</td>
 			</tr>
-
-
-
-
-
-			
 		</table>
+
+	<!-- Создаем кнопки для работы -->
 	<a href = "javascript://" onclick="addColumns();">Добавить</a>
-
 	<a href = "javascript://" onclick="plan (['АС','ДГ'])">Пересчитать</a>
+
 </body>
-<div class="box"> <input type="text" id ="userVers"></div>
 
+<!-- Вызываем "сторонний" скрипт -->
 <script src="dataForCalculations.js"></script>
-<script type="text/javascript">
 
-	var numberOfAdditions = 0;
+<script>
 
-	function addColumns() {
-
-		var td1 = newColumns (td1);
-		var td2 = newColumns (td2);
-		var td3 = newColumns (td3);
-		var td4 = newColumns (td4);
-		var td5 = newColumns (td5);
-		var td6 = newColumns (td6);
-		var td7 = newColumns (td7);
-		var td8 = newColumns (td8);
-		var td9 = newColumns (td9);
-		var td10 = newColumns (td10);
-		var td11 = newColumns (td11);
-		var td12 = newColumns (td12);
-		var td13 = newColumns (td13);
-		var td14 = newColumns (td14);
-		var td15 = newColumns (td15);
-		var td16 = newColumns (td16);
-		var td17 = newColumns (td17);
-		var td18 = newColumns (td18);
-		var td19 = newColumns (td19);
-		var td20 = newColumns (td20);
-		var td21 = newColumns (td21);
-		var td22 = newColumns (td22);
+	var numberOfAdditions = 0; // Задаем переменную для подсчета количества раз добавлений таблицы
 
 
+	function addColumns() { // Функция добавляет новые столбцы
+
+		dataPlus (); // Увеличиваем на 1 количество добавлений таблицы
 
 
+		var td1 = newColumns (td1,"td1"); // Создаем стобцы в виде тега "td" и присваиваем id
+		var td2 = newColumns (td2,"td2");
+		var td3 = newColumns (td3,"td3");
+		var td4 = newColumns (td4,"td4");
+		var td5 = newColumns (td5,"td5");
+		var td6 = newColumns (td6,"td6");
+		var td7 = newColumns (td7,"td7");
+		var td8 = newColumns (td8,"td8");
+		var td9 = newColumns (td9,"td9");
+		var td10 = newColumns (td10,"td10");
+		var td11 = newColumns (td11,"td11");
+		var td12 = newColumns (td12,"td12");
+		var td13 = newColumns (td13,"td13");
+		var td14 = newColumns (td14,"td14");
+		var td15 = newColumns (td15,"td15");
+		var td16 = newColumns (td16,"td16");
+		var td17 = newColumns (td17,"td17");
+		var td18 = newColumns (td18,"td18");
+		var td19 = newColumns (td19,"td19");
+		var td20 = newColumns (td20,"td20");
+		var td21 = newColumns (td21,"td21");
+		var td22 = newColumns (td22,"td22");
+
+			// var td2 = document.createElement("TD");  td2.innerHTML = -0.5;
+			// var nameTd3 = "td3" + data;
+			// var td3 = document.createElement("TD");  td3.id = nameTd3;
+			// var nameTd4 = "td4" + data;
+			// var td4 = document.createElement("TD");  td4.id = nameTd4;
+			
+
+		td18.appendChild ( newList(["АС","ДГ"], "seltd18") ); // Вставляем в столбцы списки
+		td19.appendChild ( newList(["склад 1","склад 2"], "seltd19") ); 
 
 
-		// var td2 = document.createElement("TD");  td2.innerHTML = -0.5;
-		// var nameTd3 = "td3" + data;
-		// var td3 = document.createElement("TD");  td3.id = nameTd3;
-		// var nameTd4 = "td4" + data;
-		// var td4 = document.createElement("TD");  td4.id = nameTd4;
-		// td5.innerHTML = 
-		td18.appendChild ( newList(["АС","ДГ"]) );
+		td5.appendChild ( data_insertion ("insert5") ); // Вставляем в столбцы возможность ввода данных
+		td6.appendChild ( data_insertion ("insert6") );
+		td7.appendChild ( data_insertion ("insert7") );
+		td17.appendChild ( data_insertion ("insert17") );
+		td20.appendChild ( data_insertion ("insert20") );
+		td21.appendChild ( data_insertion ("insert21") );
+		td22.appendChild ( data_insertion ("insert22") );
 
 
-		row1.appendChild (td1);
+		row1.appendChild (td1); // Добавляем столбцы внутрь строк
 		row2.appendChild (td2);
 		row3.appendChild (td3);
 		row4.appendChild (td4);
@@ -159,48 +189,65 @@
 		row20.appendChild (td20);
 		row21.appendChild (td21);
 		row22.appendChild (td22);
-
-
-
-
-
-
 	}
 
-	function newList (arr) {
+	// Функция, создающая новый список для некоторых столбцов.
+	function newList (arr, name) {
 		var select = document.createElement('select');
+
 		for (var i = 0; i < arr.length; i++) {
 			var option = document.createElement('option');
 			option.innerHTML = arr[i];
 			select.appendChild(option);
 		}
-		select.id = "sel" + numberOfAdditions;
+
+		select.id = name + numberOfAdditions;
 		return select;
 	}
 
+	// Функция, создающая поле для ввода данных внутри некоторых столбцов 
+	function data_insertion (index) {
+		var inr = document.createElement("input");
+		inr.type = "text";
+		inr.id = index + numberOfAdditions;
+		return inr;
+	}
 
+	// Функция увеличивающая количество
 	function dataPlus() {
+
 		return numberOfAdditions++;
 	}
 
-	function plan (arr) {
-		if (document.getElementById("sel" + numberOfAdditions).value === "АС") {
-			document.getElementById("td3" + numberOfAdditions).innerHTML = 0.54;
-		} else document.getElementById("td3" + numberOfAdditions).innerHTML = 1.98;
-	}
-
-
-
-
-
-	function newColumns (argument) {
+	// Функция, создающая стобцы в виде тега "td" с присваиванием id
+	function newColumns (argument, index) {
 		argument = document.createElement("TD");
-		var txt = "";
-		txt += argument; 
-		var nameArgument = txt + numberOfAdditions;
-		argument.id = nameArgument;
+		argument.id = index + numberOfAdditions;
 		return argument;
 	}
+
+	// По идее, функция, запускающая пересчет данный.
+	function plan (arr) {
+		//document.getElementById("td5" + numberOfAdditions).innerHTML = document.getElementById("userVers").value;
+		var x = document.getElementById(idArray[4][0]).value;
+		alert (x);
+	}
+
+
+	for (var i = 0; i < 22; i++) {
+		days.forEach(function(elem) {
+			idArray[i][elem-1] = "td" + (i + 1) + elem;
+		})
+	}
+
+	for (var i in fact) {
+		days.forEach(function(elem) {
+			idArray[fact[i]][elem-1] = "insert" + (fact[i] + 1) + elem;
+		})
+	}
+
+
+
 </script>
 
 </html>
