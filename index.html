@@ -229,24 +229,46 @@
 	// По идее, функция, запускающая пересчет данный.
 	function plan (arr) {
 		//document.getElementById("td5" + numberOfAdditions).innerHTML = document.getElementById("userVers").value;
-		var x = document.getElementById(idArray[4][0]).value;
-		alert (x);
+		for (var i = 0; i < days.length; i++) {
+			document.getElementById(idArray[0][i]).innerHTML = totalArray[0][i];
+			document.getElementById(idArray[1][i]).innerHTML = totalArray[1][i];
+			document.getElementById(idArray[2][i]).innerHTML = totalArray[2][i];
+		}
+
 	}
 
-
+	// Заполняем массив с id элементов нашей рабочей таблицы
 	for (var i = 0; i < 22; i++) {
 		days.forEach(function(elem) {
 			idArray[i][elem-1] = "td" + (i + 1) + elem;
 		})
 	}
-
+	// Заполняем массив с id элементов нашей рабочей таблицы
 	for (var i in fact) {
 		days.forEach(function(elem) {
 			idArray[fact[i]][elem-1] = "insert" + (fact[i] + 1) + elem;
 		})
 	}
+	// Заполняем массив с id элементов нашей рабочей таблицы
+	for (var i in combo_boxes) {
+		days.forEach(function(elem) {
+			idArray[combo_boxes[i]][elem-1] = "seltd" + (combo_boxes[i] + 1) + elem;
+		})
+	}	
 
-
+	function ytr () {
+		for (var i = 0; i < days.length; i++) {
+			if (totalArray[1][i] < 8) {
+				var x = ( specificFuelConsumption[0].thermalLoad * ( (18 - totalArray[1][i]) / 41 ) * 24 ) / (1 - specificFuelConsumption[0].losses / 100);
+			} else {
+				var x = ( specificFuelConsumption[0].thermalLoad * ( 10 / 41 ) * 24 ) / (1 - specificFuelConsumption[0].losses / 100);
+			}
+			
+			totalArray[2][i] = x.toFixed (2);
+			
+		}
+	}
+	ytr ();
 
 </script>
 
