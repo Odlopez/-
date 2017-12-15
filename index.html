@@ -107,7 +107,7 @@
 
 	<!-- Создаем кнопки для работы -->
 	<a href = "javascript://" onclick="addColumns();">Добавить</a>
-	<a href = "javascript://" onclick="plan (['АС','ДГ'])">Пересчитать</a>
+	<a href = "javascript://" onclick="populate_the_table_with_data ()">Пересчитать</a>
 
 </body>
 
@@ -118,34 +118,35 @@
 
 	var numberOfAdditions = 0; // Задаем переменную для подсчета количества раз добавлений таблицы
 
+	// Заполняем массив с id-шками элементов нашей таблицы
+	fill_array_with_id ()
+
 
 	function addColumns() { // Функция добавляет новые столбцы
 
 		dataPlus (); // Увеличиваем на 1 количество добавлений таблицы
-
-
-		var td1 = newColumns (td1,"td1"); // Создаем стобцы в виде тега "td" и присваиваем id
-		var td2 = newColumns (td2,"td2");
-		var td3 = newColumns (td3,"td3");
-		var td4 = newColumns (td4,"td4");
-		var td5 = newColumns (td5,"td5");
-		var td6 = newColumns (td6,"td6");
-		var td7 = newColumns (td7,"td7");
-		var td8 = newColumns (td8,"td8");
-		var td9 = newColumns (td9,"td9");
-		var td10 = newColumns (td10,"td10");
-		var td11 = newColumns (td11,"td11");
-		var td12 = newColumns (td12,"td12");
-		var td13 = newColumns (td13,"td13");
-		var td14 = newColumns (td14,"td14");
-		var td15 = newColumns (td15,"td15");
-		var td16 = newColumns (td16,"td16");
-		var td17 = newColumns (td17,"td17");
-		var td18 = newColumns (td18,"td18");
-		var td19 = newColumns (td19,"td19");
-		var td20 = newColumns (td20,"td20");
-		var td21 = newColumns (td21,"td21");
-		var td22 = newColumns (td22,"td22");
+		var td1 = newColumns (td1,"td1-"); // Создаем стобцы в виде тега "td" и присваиваем id
+		var td2 = newColumns (td2,"td2-");
+		var td3 = newColumns (td3,"td3-");
+		var td4 = newColumns (td4,"td4-");
+		var td5 = newColumns (td5,"td5-");
+		var td6 = newColumns (td6,"td6-");
+		var td7 = newColumns (td7,"td7-");
+		var td8 = newColumns (td8,"td8-");
+		var td9 = newColumns (td9,"td9-");
+		var td10 = newColumns (td10,"td10-");
+		var td11 = newColumns (td11,"td11-");
+		var td12 = newColumns (td12,"td12-");
+		var td13 = newColumns (td13,"td13-");
+		var td14 = newColumns (td14,"td14-");
+		var td15 = newColumns (td15,"td15-");
+		var td16 = newColumns (td16,"td16-");
+		var td17 = newColumns (td17,"td17-");
+		var td18 = newColumns (td18,"td18-");
+		var td19 = newColumns (td19,"td19-");
+		var td20 = newColumns (td20,"td20-");
+		var td21 = newColumns (td21,"td21-");
+		var td22 = newColumns (td22,"td22-");
 
 			// var td2 = document.createElement("TD");  td2.innerHTML = -0.5;
 			// var nameTd3 = "td3" + data;
@@ -154,17 +155,16 @@
 			// var td4 = document.createElement("TD");  td4.id = nameTd4;
 			
 
-		td18.appendChild ( newList(["АС","ДГ"], "seltd18") ); // Вставляем в столбцы списки
-		td19.appendChild ( newList(["склад 1","склад 2"], "seltd19") ); 
+		td18.appendChild ( newList(["АС","ДГ"], "seltd18-") ); // Вставляем в столбцы списки
+		td19.appendChild ( newList(["склад 1","склад 2"], "seltd19-") );
+		td22.appendChild ( newList(["АС","ДГ"], "seltd22-") );
 
 
-		td5.appendChild ( data_insertion ("insert5") ); // Вставляем в столбцы возможность ввода данных
-		td6.appendChild ( data_insertion ("insert6") );
-		td7.appendChild ( data_insertion ("insert7") );
-		td17.appendChild ( data_insertion ("insert17") );
-		td20.appendChild ( data_insertion ("insert20") );
-		td21.appendChild ( data_insertion ("insert21") );
-		td22.appendChild ( data_insertion ("insert22") );
+		td5.appendChild ( data_insertion ("insert5-") ); // Вставляем в столбцы возможность ввода данных
+		td6.appendChild ( data_insertion ("insert6-") );
+		td7.appendChild ( data_insertion ("insert7-") );
+		td17.appendChild ( data_insertion ("insert17-") );
+		td21.appendChild ( data_insertion ("insert21-") );
 
 
 		row1.appendChild (td1); // Добавляем столбцы внутрь строк
@@ -209,6 +209,7 @@
 	function data_insertion (index) {
 		var inr = document.createElement("input");
 		inr.type = "text";
+		inr.size = 6;
 		inr.id = index + numberOfAdditions;
 		return inr;
 	}
@@ -226,53 +227,251 @@
 		return argument;
 	}
 
-	// По идее, функция, запускающая пересчет данный.
-	function plan (arr) {
-		//document.getElementById("td5" + numberOfAdditions).innerHTML = document.getElementById("userVers").value;
+	// Функция, запускаюшая расчет данных
+	function populate_the_table_with_data () {
+
 		for (var i = 0; i < days.length; i++) {
+			fill_line_3 (i); // Наполняем данными строку №3
 			document.getElementById(idArray[0][i]).innerHTML = totalArray[0][i];
 			document.getElementById(idArray[1][i]).innerHTML = totalArray[1][i];
-			document.getElementById(idArray[2][i]).innerHTML = totalArray[2][i];
+			document.getElementById(idArray[2][i]).innerHTML = totalArray[2][i];	
+			fill_line_21 (i); // Наполняем данными строки
+			fill_line_5 (i); // Наполняем данными строки
+			fill_line_6 (i); // Наполняем данными строки
+			fill_line_7 (i); // Наполняем данными строки
+			fill_line_17 (i); // Наполняем данными строки
+			fill_line_8 (i); // Наполняем данными строки
+			fill_line_9 (i); // Наполняем данными строки
+			fill_line_10 (i); // Наполняем данными строки
+			fill_line_11 (i); // Наполняем данными строки
+			fill_line_4 (i); // Наполняем данными строки
+			fill_line_14 (i); // Наполняем данными строки
+			fill_line_15 (i); // Наполняем данными строки
+			fill_line_20 (i); // Наполняем данными строки
+			fill_line_8 (i); // Наполняем данными строки
+			fill_line_9 (i); // Наполняем данными строки
+			fill_line_12 (i); // Наполняем данными строки
+			fill_line_13 (i); // Наполняем данными строки
+			fill_line_16 (i); // Наполняем данными строки
 		}
-
 	}
 
-	// Заполняем массив с id элементов нашей рабочей таблицы
-	for (var i = 0; i < 22; i++) {
-		days.forEach(function(elem) {
-			idArray[i][elem-1] = "td" + (i + 1) + elem;
-		})
+	// Функция заполнения массива с id-шками элементов нашей таблицы
+	function fill_array_with_id () {
+		// Заполняем массив с id элементов нашей рабочей таблицы для обычных столбцов
+		for (var i = 0; i < 22; i++) {
+			days.forEach(function(elem) {
+				idArray[i][elem-1] = "td" + (i + 1) + "-" + elem;
+			})
+		}
+		// Заполняем массив с id элементов нашей рабочей таблицы для столбцов с полем ввода
+		for (var i in fact) {
+			days.forEach(function(elem) {
+				idArray[fact[i]][elem-1] = "insert" + (fact[i] + 1) + "-" + elem;
+			})
+		}
+		// Заполняем массив с id элементов нашей рабочей таблицы для столбцов с выпадающими списками
+		for (var i in combo_boxes) {
+			days.forEach(function(elem) {
+				idArray[combo_boxes[i]][elem-1] = "seltd" + (combo_boxes[i] + 1) + "-" + elem;
+			})
+		}	
 	}
-	// Заполняем массив с id элементов нашей рабочей таблицы
-	for (var i in fact) {
-		days.forEach(function(elem) {
-			idArray[fact[i]][elem-1] = "insert" + (fact[i] + 1) + elem;
-		})
+
+	// Наполняем данными строку №21
+	function fill_line_21 (i) {
+		totalArray[20][i] = (parseFloat(document.getElementById(idArray[20][i]).value) || 0);
+		document.getElementById(idArray[20][i]).innerHTML = totalArray[20][i].toFixed(3);
 	}
-	// Заполняем массив с id элементов нашей рабочей таблицы
-	for (var i in combo_boxes) {
-		days.forEach(function(elem) {
-			idArray[combo_boxes[i]][elem-1] = "seltd" + (combo_boxes[i] + 1) + elem;
-		})
+
+	// Наполняем данными строку №5
+	function fill_line_5 (i) {
+		totalArray[4][i] = (parseFloat(document.getElementById(idArray[4][i]).value) || 0);
+		document.getElementById(idArray[4][i]).innerHTML = totalArray[4][i].toFixed(3);
 	}	
 
-	function ytr () {
-		for (var i = 0; i < days.length; i++) {
-			if (totalArray[1][i] < 8) {
-				var x = ( specificFuelConsumption[0].thermalLoad * ( (18 - totalArray[1][i]) / 41 ) * 24 ) / (1 - specificFuelConsumption[0].losses / 100);
-			} else {
-				var x = ( specificFuelConsumption[0].thermalLoad * ( 10 / 41 ) * 24 ) / (1 - specificFuelConsumption[0].losses / 100);
-			}
-			
-			totalArray[2][i] = x.toFixed (2);
-			
-		}
+	// Наполняем данными строку №6
+	function fill_line_6 (i) {
+		totalArray[5][i] = (parseFloat(document.getElementById(idArray[5][i]).value) || 0);
+		document.getElementById(idArray[5][i]).innerHTML = totalArray[5][i].toFixed(2);
+	}	
+
+	// Наполняем данными строку №7
+	function fill_line_7 (i) {
+		totalArray[6][i] = (parseFloat(document.getElementById(idArray[6][i]).value) || 0);
+		document.getElementById(idArray[6][i]).innerHTML = totalArray[6][i].toFixed(2);
+	}		
+
+	// Наполняем данными строку №17
+	function fill_line_17 (i) {
+		totalArray[16][i] = (parseFloat(document.getElementById(idArray[16][i]).value) || 0);
+		document.getElementById(idArray[16][i]).innerHTML = totalArray[16][i].toFixed(2);
+	}		
+
+	// Наполняем данными строку №3
+	function fill_line_3 (i) {
+	
+		if (totalArray[1][i] < 8) {
+			var x = ( specificFuelConsumption[0].thermalLoad * ( (18 - totalArray[1][i]) / 41 ) * 24 ) / (1 - specificFuelConsumption[0].losses / 100);
+		} else 	var x = ( specificFuelConsumption[0].thermalLoad * ( 10 / 41 ) * 24 ) / (1 - specificFuelConsumption[0].losses / 100);
+		x = parseFloat (x);
+		totalArray[2][i] = x.toFixed (2);
 	}
-	ytr ();
+
+	// Наполняем данными строку №4
+	function fill_line_4 (i) {
+		totalArray[3][i] = (totalArray[2][i] * specificFuelConsumption[0].amout) / ( ((totalArray[8][i - 1] || 0) * totalArray[5][i] / 100 +  (totalArray[12][i - 1] || 0) * totalArray[6][i] / 100 )/ 7);
+		document.getElementById(idArray[3][i]).innerHTML = totalArray[3][i].toFixed (2);;
+	}
+
+	// Наполняем данными строку №16
+	function fill_line_16 (i) {
+		totalArray[15][i] = (totalArray[4][i] * totalArray[5][i] / 100 * parseFloat(totalArray[7][i]) + totalArray[4][i] * totalArray[6][i] / 100 * parseFloat(totalArray[11][i])) / totalArray[4][i];
+
+		document.getElementById(idArray[15][i]).innerHTML = totalArray[15][i].toFixed(0);
+	}
+
+	// Наполняем данными строку №10
+	function fill_line_10 (i) {
+		totalArray[9][i] = totalArray[10][i - 1] || 0;
+		document.getElementById(idArray[9][i]).innerHTML = totalArray[9][i].toFixed(3);
+	}
+
+	// Наполняем данными строку №11
+	function fill_line_11 (i) {
+
+		if (document.getElementById(idArray[21][i]).value === "АС") {
+
+			if (document.getElementById(idArray[17][i]).value === "АС") {
+				totalArray[10][i] = totalArray[9][i] - totalArray[4][i] * totalArray[5][i] / 100  - totalArray[20][i] + totalArray[16][i];
+			} else totalArray[10][i] = totalArray[9][i] - totalArray[4][i] * totalArray[5][i] / 100 - totalArray[20][i];
+
+		} else {
+
+			if (document.getElementById(idArray[17][i]).value === "АС") {
+				totalArray[10][i] = totalArray[9][i] - totalArray[4][i] * totalArray[5][i] / 100 + totalArray[16][i];
+			} else totalArray[10][i] = totalArray[9][i] - totalArray[4][i] * totalArray[5][i] / 100;
+
+		}
+
+		document.getElementById(idArray[10][i]).innerHTML = totalArray[10][i].toFixed(3);
+	}
+
+	// Наполняем данными строку №14
+	function fill_line_14 (i) {
+		totalArray[13][i] = totalArray[14][i - 1] || 0;
+		document.getElementById(idArray[13][i]).innerHTML = totalArray[13][i].toFixed(3);
+	}
+
+	// Наполняем данными строку №15
+	function fill_line_15 (i) {
+
+		if (document.getElementById(idArray[21][i]).value === "ДГ") {
+
+			if (document.getElementById(idArray[17][i]).value === "ДГ") {
+				totalArray[14][i] = totalArray[13][i] - totalArray[4][i] * totalArray[6][i] / 100  - totalArray[20][i] + totalArray[16][i];
+			} else totalArray[14][i] = totalArray[13][i] - totalArray[4][i] * totalArray[6][i] / 100 - totalArray[20][i];
+
+		} else {
+
+			if (document.getElementById(idArray[17][i]).value === "ДГ") {
+				totalArray[14][i] = totalArray[13][i] - totalArray[4][i] * totalArray[6][i] / 100 + totalArray[16][i];
+			} else totalArray[14][i] = totalArray[13][i] - totalArray[4][i] * totalArray[6][i] / 100;
+
+		}
+
+		document.getElementById(idArray[14][i]).innerHTML = totalArray[14][i].toFixed(3);
+	}
+
+	// Наполняем данными строку №20
+	function fill_line_20 (i) {
+
+		if (document.getElementById(idArray[18][i]).value === "склад 1") {
+			if (document.getElementById(idArray[17][i]).value === "АС") {
+				totalArray[19][i] = warehouseData[0].caloricityAS;
+			} else totalArray[19][i] = warehouseData[0].caloricityDG;
+		} else {
+			if (document.getElementById(idArray[17][i]).value === "АС") {
+				totalArray[19][i] = warehouseData[1].caloricityAS;
+			} else totalArray[19][i] = warehouseData[1].caloricityDG;
+		}
+
+		if ( totalArray[16][i] == 0 ) {
+			totalArray[19][i] = 0;
+		}
+
+		document.getElementById(idArray[19][i]).innerHTML = totalArray[19][i];
+	}
+
+	// Наполняем данными строку №8
+	function fill_line_8 (i) {
+
+		if (totalArray[10][i - 1] > 0) {
+			if ( (totalArray[4][i] * totalArray[5][i] / 100) > totalArray[10][i - 1]) {
+				totalArray[7][i] = ( (totalArray[10][i - 1] || 0) * (totalArray[8][i - 1] || 0) + ( (totalArray[4][i] * totalArray[5][i] / 100) - (totalArray[10][i - 1] || 0) ) * totalArray[19][i] ) / (totalArray[4][i] * totalArray[5][i] / 100);
+			} else totalArray[7][i] = (totalArray[8][i - 1] || 0);
+
+		} else if (document.getElementById(idArray[17][i]).value === "АС") {
+			totalArray[7][i] = totalArray[19][i];
+		} else totalArray[7][i] =  (totalArray[8][i - 1] || 0);
+
+		document.getElementById(idArray[7][i]).innerHTML = parseInt ( totalArray[7][i] );
+	}
+
+	// Наполняем данными строку №9
+	function fill_line_9 (i) {
+		if (totalArray[10][i - 1] > 0) {
+			if (document.getElementById(idArray[17][i]).value === "АС") {
+				if ( (totalArray[4][i] * totalArray[5][i] / 100) > totalArray[10][i - 1]) {
+					totalArray[8][i] = totalArray[19][i];
+				} else {
+					totalArray[8][i] = (( totalArray[10][i - 1] - (totalArray[4][i] * totalArray[5][i] / 100) ) * totalArray[7][i] + totalArray[16][i] * totalArray[19][i]) / ( (totalArray[10][i - 1] || 0) - (totalArray[4][i] * totalArray[5][i] / 100) + totalArray[16][i] );
+				}
+			} else if ((totalArray[4][i] * totalArray[5][i] / 100) > totalArray[10][i - 1]) {
+				totalArray[8][i] = 0;
+			} else totalArray[8][i] = totalArray[7][i];
+		} else if (document.getElementById(idArray[17][i]).value === "АС") {
+			totalArray[8][i] = totalArray[19][i];
+		} else totalArray[8][i] = 0;
+
+		document.getElementById(idArray[8][i]).innerHTML = parseInt ( totalArray[8][i] );
+	}
+
+	// Наполняем данными строку №12
+	function fill_line_12 (i) {
+
+		if (totalArray[14][i - 1] > 0) {
+			if ( (totalArray[4][i] * totalArray[6][i] / 100) > totalArray[14][i - 1]) {
+				totalArray[11][i] = ( (totalArray[14][i - 1] || 0) * (totalArray[12][i - 1] || 0) + ( (totalArray[4][i] * totalArray[6][i] / 100) - (totalArray[14][i - 1] || 0) ) * totalArray[19][i] ) / (totalArray[4][i] * totalArray[6][i] / 100);
+			} else totalArray[11][i] = (totalArray[12][i - 1] || 0);
+
+		} else if (document.getElementById(idArray[17][i]).value === "ДГ") {
+			totalArray[11][i] = totalArray[19][i];
+		} else totalArray[11][i] =  (totalArray[12][i - 1] || 0);
+
+		document.getElementById(idArray[11][i]).innerHTML = parseInt ( totalArray[11][i] );
+	}
+
+	// Наполняем данными строку №13
+	function fill_line_13 (i) {
+		if (totalArray[14][i - 1] > 0) {
+			if (document.getElementById(idArray[17][i]).value === "ДГ") {
+				if ( (totalArray[4][i] * totalArray[6][i] / 100) > totalArray[14][i - 1]) {
+					totalArray[12][i] = totalArray[19][i];
+				} else {
+					totalArray[12][i] = (( totalArray[14][i - 1] - (totalArray[4][i] * totalArray[6][i] / 100) ) * totalArray[11][i] + totalArray[16][i] * totalArray[19][i]) / ( (totalArray[14][i - 1] || 0) - (totalArray[4][i] * totalArray[6][i] / 100) + totalArray[16][i] );
+				}
+			} else if ((totalArray[4][i] * totalArray[6][i] / 100) > totalArray[14][i - 1]) {
+				totalArray[12][i] = 0;
+			} else totalArray[12][i] = totalArray[11][i];
+		} else if (document.getElementById(idArray[17][i]).value === "ДГ") {
+			totalArray[12][i] = totalArray[19][i];
+		} else totalArray[12][i] = 0;
+
+		document.getElementById(idArray[12][i]).innerHTML = parseInt ( totalArray[12][i] );
+	}
 
 </script>
 
 </html>
 
-<!-- https://htmlweb.ru/java/example/add_row_in_table.php -->
-<!-- https://javascript.ru/forum/dom-window/1264-dobavlenie-strok-v-tablicu.html -->
