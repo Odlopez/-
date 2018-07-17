@@ -8,35 +8,40 @@
   };
   const options = {
     name: {
+      name: 'name',
       type: 'text',
       label: 'Наименования котельной '
     },
     load: {
+      name: 'load',
       type: 'number',
       label: 'Нагрузка котельной ',
-      step: 0.001
+      step: 0.001,
+      min: 0
     },
     loss: {
+      name: 'loss',
       type: 'number',
       label: 'Потери в сетях ',
-      step: 0.1
+      step: 0.1,
+      min: 0,
+      max: 100
     },
     specific: {
+      name: 'specific',
       type: 'number',
       label: 'Норма удельного расхода ',
-      step: 0.1
+      step: 0.1,
+      min: 142.8
     },
   }
 
   // Создает элемент input
-  const creatInput = function (inputName, inputType, step) {
+  const creatInput = function (inputOptions) {
     const inputElement = document.createElement('input');
 
-    inputElement.name = inputName;
-    inputElement.type = inputType;
-
-    if (step) {
-      inputElement.step = step;
+    for (let key in inputOptions) {
+      inputElement[key] = inputOptions[key];
     }
 
     return inputElement;
@@ -87,7 +92,7 @@
     submit.addEventListener('click', onSubmitClick);
 
     for (let key in options) {
-      let label = createLebel(options[key].label, creatInput(key, options[key].type, options[key].step));
+      let label = createLebel(options[key].label, creatInput(options[key]));
       form.appendChild(label);   
     }
     
