@@ -1,11 +1,11 @@
 'use strict';
 
 (function () {
-  const boilers = {};
   const newBoilerButton = document.querySelector('button');
+  window.boilers = {};
 
   // Создает объект новой котельной
-  const makeNewBoiler = function (arg) {
+  const makeNewBolierDataObj = function (arg) {
     const newBoiler = new window.Boiler(arg);
     const nameBoiler = newBoiler.name;
 
@@ -14,26 +14,22 @@
     });
 
     if (!isNameRepeat && nameBoiler) {
-      boilers[nameBoiler] = newBoiler;
+      window.boilers[nameBoiler] = newBoiler;
     } else {
       alert('Вы не ввели название котельной или же котельная с таким названием уже существует!');
 
       return false;
     }
 
-    return true;
+    return window.boilers[nameBoiler];
   };
-
-
 
   // Обработчик события 'клик' для кнопки создания новой котельной
   const onNewBoilerButtonClick = function (evt) {
     evt.preventDefault();
 
-    window.createBoiler(makeNewBoiler);
+    window.createBoiler(makeNewBolierDataObj, window.createBoilerTable);
   };
 
   newBoilerButton.addEventListener('click', onNewBoilerButtonClick);
-
-  window.boilers = boilers;
 })();

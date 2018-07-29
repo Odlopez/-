@@ -34,7 +34,9 @@
       step: 0.1,
       min: 142.8
     },
-  }
+  };
+  let newBolierDataObj;
+  const newBoilerButton = document.querySelector('button');
 
   // Создает элемент input
   const creatInput = function (inputOptions) {
@@ -71,7 +73,7 @@
   };
 
   // Создает форму для регистрации новой котельной
-  window.createBoiler = function (func) {
+  window.createBoiler = function (createDataObj, createNodeElement) {
     const form = document.createElement('form');
     const submit = document.createElement('button');
 
@@ -79,10 +81,11 @@
     const onSubmitClick = function (evt) {
       evt.preventDefault();
 
-      const isSuccess = func(form.elements);
+      newBolierDataObj = createDataObj(form.elements);
       
-      if (isSuccess) {
+      if (newBolierDataObj) {
         deleteForm();
+        createNodeElement(newBolierDataObj);
       }
     };
 
@@ -99,7 +102,7 @@
     form.appendChild(submit);
   
     form.classList.add(FORM_CLASS);
-    document.body.appendChild(form);
+    newBoilerButton.insertAdjacentElement('afterend', form);
 
     document.addEventListener('keydown', onDocumentKeydown);
   };

@@ -9,8 +9,111 @@
 </head>
 <body>
   <button type="button">Создать котельную</button>
+
+  <template class="template">
+      <table class="boiler-talbe">
+        <caption class="boiler-talbe__name">Название котельной</caption>
+        <tr>
+          <td>Дата</td>
+          <td></td>
+          <td><button class="add-button add-col" type="button"></button></td>
+        </tr>
+        <tr>
+          <td>t-ра нар. воз-ха, <sup>0</sup>С</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="boiler-talbe__loss">
+          <td>Потери в т/с, %</td>
+          <td>
+            <span class="value"></span>
+            <span>
+              <button class="add-button" type="button"></button>
+            </span>
+          </td>
+          <td></td>
+        </tr>
+        <tr class="boiler-talbe__specific">
+          <td>Уд. нор-ма, кгу.т./Гкал</td>
+          <td>
+            <span class="value"></span>
+            <span>
+              <button class="add-button" type="button"></button>
+            </span>
+          </td>
+          <td></td>
+        </tr>
+        <tr  class="boiler-talbe__load">
+          <td>Подключенная нагрузка, Гкал/ч</td>
+          <td>
+            <span class="value"></span>
+            <span>
+              <button class="add-button" type="button"></button>
+            </span>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>План, т</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="coal-consumption">
+          <td class="coal-consumption__first-td">Факт <span class="coal-consumption__coal-grade">(марка угля)</span>, т</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Отпуск, Гкал/сут</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="caloric-top-row">
+          <td class="caloric-top-row__first-td" rowspan="2">Калорийность остатка <span class="caloric-value__coal-grade">(марка угля)</span>, ккал/кг</td>
+          <td class="caloric-top-row__start-time">на 00:00</td>
+          <td></td>
+        </tr>
+        <tr class="caloric-bottom-row">
+          <td class="caloric-bottom-row__end-time">на 24:00</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Калорийность, списания, ккал/кг</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="remainder-top-row">
+          <td class="remainder-top-row__first-td" rowspan="2">Остаток, т</td>
+          <td class="remainder-top-row__start-time">на 00:00</td>
+          <td></td>
+        </tr>
+        <tr class="remainder-bottom-row">
+          <td class="remainder-bottom-row__end-time">на 24:00</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Поступило на котельную, т</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Калорийность прихода, ккал/кг</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Ушло с котельной на другие объекты, т</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      
+  </template>
+    
+
   <script src="js/create-boiler.js"></script>
   <script src="js/boiler.js"></script>
+  <script src="js/boiler-table.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

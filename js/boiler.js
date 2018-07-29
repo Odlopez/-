@@ -3,10 +3,11 @@
 (function () {
   // Конструктор для создания объекта котельной
   const Boiler = function (arg) {
-    var x = this;
+    var _this = this;
+    
     Array.prototype.slice.apply(arg).forEach(function (it) {
       if (it.tagName.toLowerCase() === 'input') {
-        x[it.getAttribute('name')] = it.value;
+        _this[it.name] = it.value;
       }
    });
   };
